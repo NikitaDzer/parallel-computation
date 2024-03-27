@@ -23,8 +23,8 @@ initPlot( visual::GNUPlot& plot,
 
     plot.setGrid();
 
-    plot.setMTicsX( 1 );
-    plot.setMTicsY( 1 );
+    plot.setMTicsX( 1);
+    plot.setMTicsY( 1);
 
     plot.setAutoscale();
 

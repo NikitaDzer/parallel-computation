@@ -3,6 +3,8 @@ project(ParLab1)
 
 find_package(MPI REQUIRED)
 
+set(CMAKE_CXX_FLAGS "-Ofast")
+
 # Static GNUPlot library.
 set(VISUAL_SOURCES src/plot.cc)
 add_library(visual ${VISUAL_SOURCES})
@@ -19,3 +21,8 @@ target_link_libraries(pde PRIVATE visual MPI::MPI_CXX)
 add_executable(pi pi.cc)
 target_compile_features(pi PUBLIC cxx_std_20)
 target_link_libraries(pi PRIVATE MPI::MPI_CXX)
+
+# Communication time counter.
+add_executable(time time.cc)
+target_compile_features(time PUBLIC cxx_std_20)
+target_link_libraries(time PRIVATE MPI::MPI_CXX)
