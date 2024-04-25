@@ -25,8 +25,9 @@ public:
     using Base = TaskCtx;
 
 public:
-    ParTaskCtx( const Base& base):
-        Base{ base}
+    ParTaskCtx( const Base& base, uint32_t threads_number):
+        Base{ base},
+        m_threads_number{ threads_number}
     {
     }
 

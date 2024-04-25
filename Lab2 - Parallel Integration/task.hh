@@ -23,7 +23,8 @@ class TaskCtx
 
 public:
     TaskCtx() = default;
-    
+    virtual ~TaskCtx() = default;
+
     Function1D getFunction() const noexcept
         { return m_function; }
     void setFunction( Function1D function) noexcept

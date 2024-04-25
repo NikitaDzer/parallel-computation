@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(ParLab2)
 
-set(CMAKE_CXX_FLAGS "-Ofast -flto -fwhole-program")
+set(CMAKE_CXX_FLAGS "-Ofast -flto -fwhole-program -fsanitize=address")
 
 # PINT application.
 add_executable(pint main.cc seq.cc par.cc)
