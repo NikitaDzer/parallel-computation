@@ -46,9 +46,9 @@ public:
     void decrementActive()
         { m_active_number.fetch_sub( 1); }
 
-    double getJ() const
+    double getJ() const override
         { return m_j.load(); }
-    void setJ( double j) 
+    void setJ( double j) override
         { m_j.store( j); }
     void addJ( double j)
         { m_j.fetch_add( j); }
@@ -58,7 +58,7 @@ public:
     void setThreadsNumber( uint32_t threads_number) noexcept
         { assert( threads_number > 0); m_threads_number = threads_number; }
 
-    void integrate()
+    void integrate() override
     {
         assert( m_function);
         assert( m_epsilon > 0.0);

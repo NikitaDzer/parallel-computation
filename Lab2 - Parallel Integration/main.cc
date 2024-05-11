@@ -35,24 +35,20 @@ main( const int argc,
     base_ctx.setEpsilon( epsilon);
     base_ctx.setSegment( A, B);
 
-    double J = 0;
+    std::unique_ptr<integr::TaskCtx> ctx{};
 
     if ( argc == 4 )
     {
-        integr::SeqTaskCtx seq_ctx{ base_ctx};
-        seq_ctx.integrate();
-
-        J = seq_ctx.getJ();
+        ctx = std::make_unique<integr::SeqTaskCtx>( base_ctx);
     } else
     {
-        integr::ParTaskCtx par_ctx{ base_ctx};
-        par_ctx.setThreadsNumber( std::atoi( argv[4]));
-        par_ctx.integrate();
-
-        J = par_ctx.getJ();
+        uint32_t threads_number = std::atoi( argv[4]);
+        ctx = std::make_unique<integr::ParTaskCtx>( base_ctx, threads_number);
     }
 
-    std::cout << J << std::endl;
+    ctx->integrate();
+
+    std::cout << ctx->getJ() << std::endl;
 
     return EXIT_SUCCESS;
 } // main

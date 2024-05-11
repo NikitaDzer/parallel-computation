@@ -27,14 +27,14 @@ public:
     {
     }
 
-    double getJ() const noexcept
+    double getJ() const noexcept override
         { return m_j; }
-    void setJ( double j) noexcept
+    void setJ( double j) noexcept override
         { m_j = j; }
     void addJ( double j) noexcept
         { m_j += j; }
 
-    void integrate()
+    void integrate() override
     {
         assert( m_function);
         assert( m_epsilon > 0.0);
